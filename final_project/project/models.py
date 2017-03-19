@@ -12,6 +12,11 @@ class Data(models.Model):
 	Sensor = models.ForeignKey(
         'Sensors',
         on_delete=models.CASCADE, 
+<<<<<<< HEAD
+=======
+
+    )
+>>>>>>> e51a9617d6cf11d985daf7e8c0a84ba9b15e9bb1
 
     )
 
