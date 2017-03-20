@@ -10,3 +10,10 @@ class DataAdmin(admin.ModelAdmin):
 
 admin.site.register(Data, DataAdmin)
 
+
+class SensorAdmin(admin.ModelAdmin):
+	list_display = ['sensor_id', 'Sensor_name', 'user']
+	class Meta:
+		model = Data 
+
+admin.site.register(Sensors, SensorAdmin)

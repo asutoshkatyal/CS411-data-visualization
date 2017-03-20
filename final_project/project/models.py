@@ -39,9 +39,8 @@ class MyUserManager(BaseUserManager):
         user.set_password(password)
         user.save(using=self._db)
         return user
-class MyUser(AbstractBaseUser):
-    email = models.EmailField(
-        verbose_name='email address',
+"""class MyUser(AbstractBaseUser):
+       verbose_name='email address',
         max_length=255,
         unique=True,
     )
@@ -51,7 +50,7 @@ class MyUser(AbstractBaseUser):
 
     objects = MyUserManager()
 
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'email'""" 
 
 def deleteData(self):
 		with connection.cursor() as cur:
@@ -72,7 +71,5 @@ class Sensors(models.Model):
     
     sensor_id = models.AutoField(primary_key=True) 
     Sensor_name = models.CharField(max_length = 200) 
-    #user = models.OneToManyField(User, on_delete=models.CASCADE) 
-    user = models.ForeignKey(
-        'MyUser',
-        on_delete=models.CASCADE,)
+    user = models.ForeignKey(User, unique=True)
+
