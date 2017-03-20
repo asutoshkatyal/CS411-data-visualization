@@ -50,7 +50,10 @@ class MyUserManager(BaseUserManager):
 
     objects = MyUserManager()
 
-    USERNAME_FIELD = 'email'""" 
+    USERNAME_FIELD = 'email'"""  
+def getData(self, sensor_id):
+		with connection.cursor() as cur:
+			 return cur.execute('SELECT values FROM project_data WHERE Sensors.sensor_id= %s',[sensor_id]) #replace with value (maybe)
 
 def deleteData(self):
 		with connection.cursor() as cur:
