@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Data
+from .models import Data,Sensors
 
 
 class DataAdmin(admin.ModelAdmin):
@@ -9,3 +9,4 @@ class DataAdmin(admin.ModelAdmin):
 		model = Data
 
 admin.site.register(Data, DataAdmin)
+
