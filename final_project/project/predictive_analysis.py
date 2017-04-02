@@ -50,14 +50,16 @@ print("""
 				&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 """)
  
-#generating the data
-m = int(input("enter number of training samples you want to work on , prefered to be under 50 : "))
-X = []
-y = []
-for i in range(m) :
-	X.append(i)
-	y.append(randint(0,90))
- 
+def predictive_analysis (input_sample_pts):
+ #m = int(input("enter number of training samples you want to work on , prefered to be under 50 : ")) 
+	m = input_sample_pts 
+
+	X = []
+	y = []
+	for i in range(m) :
+		X.append(i)
+		y.append(randint(0,90))
+	 
 #Evaluate the linear regression
 def compute_cost(X, y, theta):
     '''
@@ -77,12 +79,22 @@ def compute_cost(X, y, theta):
     return J
  
  
-def gradient_descent(X, y, theta, alpha, num_iters):
+def gradient_descent(X, y, alpha, num_iters,input_sample_pts):
     '''
     Performs gradient descent to learn theta
     by taking num_items gradient steps with learning
-    rate alpha
-    '''
+    rate alpha 
+    '''  	 
+    iterations = 2500
+	alpha = 0.01
+    theta = zeros(shape=(2, 1))
+    m = input_sample_pts 
+
+	X = []
+	y = []
+	for i in range(m) :
+		X.append(i)
+		y.append(randint(0,90))
     J_history = zeros(shape=(num_iters, 1))
  
     for i in range(num_iters):
@@ -97,41 +109,41 @@ def gradient_descent(X, y, theta, alpha, num_iters):
  
         J_history[i, 0] = compute_cost(X, y, theta)
  
-    return theta, J_history
+    #return theta, J_history
  
  
-#Plot the data
-scatter(X, y, marker='o', c='b')
-title("predicttion script")
-xlabel("time in minutes")
-#show()
- 
- 
-#Add a column of ones to X (interception data)
-it = ones(shape=(m, 2))
-it[:, 1] = X
- 
-#Initialize theta parameters
-theta = zeros(shape=(2, 1))
- 
-#Some gradient descent settings
-iterations = 2500
-alpha = 0.01
- 
-#compute and display initial cost
-J = compute_cost(it, y, theta)
- 
-theta, J_history = gradient_descent(it, y, theta, alpha, iterations)
- 
- 
-#Predict values for the future
-h=input("enter the minute that you want to predict : ")
-predict = array([1, 3.5]).dot(theta).flatten()
-print ('For the %s minute , we predict a value of %f' %(h,predict))
- 
-#Plot the results
-result = it.dot(theta).flatten()
-plot(X , result)
-show()
-input()
+	#Plot the data
+	scatter(X, y, marker='o', c='b')
+	title("predicttion script")
+	xlabel("time in minutes")
+	#show()
+	 
+	 
+	#Add a column of ones to X (interception data)
+	it = ones(shape=(m, 2))
+	it[:, 1] = X
+	 
+	#Initialize theta parameters
+	#theta = zeros(shape=(2, 1))
+	 
+	##Some gradient descent settings
+	#iterations = 2500
+	#alpha = 0.01
+	 
+	#compute and display initial cost
+	J = compute_cost(it, y, theta)
+	 
+	#theta, J_history = gradient_descent(it, y, theta, alpha, iterations)
+	 
+	 
+	#Predict values for the future
+	h=input("enter the minute that you want to predict : ")
+	predict = array([1, 3.5]).dot(theta).flatten()
+	print ('For the %s minute , we predict a value of %f' %(h,predict))
+	 
+	#Plot the results
+	result = it.dot(theta).flatten()
+	plot(X , result)
+	show()
+	input()
 
