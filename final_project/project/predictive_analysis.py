@@ -79,7 +79,7 @@ def compute_cost(X, y, theta):
     return J
  
  
-def gradient_descent(X, y, alpha, num_iters,input_sample_pts):
+def gradient_descent(X, y,num_iters,input_sample_pts):
     '''
     Performs gradient descent to learn theta
     by taking num_items gradient steps with learning

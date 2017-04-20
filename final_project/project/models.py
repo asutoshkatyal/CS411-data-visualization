@@ -76,3 +76,5 @@ class Sensors(models.Model):
     Sensor_name = models.CharField(max_length = 200) 
     user = models.ForeignKey(User, unique=True)
 
+sesnor_data = getData(self,sensor_id)
+
